@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Portfolio — Director of Digital Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:         #1A2D3D;
+  --ink-mid:     #2E4A60;
+  --ink-light:   #6A8DA8;
+  --rule:        #C8DFF0;
+  --bg:          #F4F8FC;
+  --white:       #FFFFFF;
+  --gold:        #2C6E9E;
+  --gold-pale:   #E0EEF8;
+  --teal:        #2E86AB;
+  --teal-pale:   #DFF0F8;
+  --plum:        #2E7BB5;
+  --plum-pale:   #E3F1FA;
+  --accent:      #4682B4;
+  --accent-dark: #2C5F8A;
+  --accent-pale: #E8F2FA;
+  --accent-mid:  #7AAFD4;
+  --cb-blue:     #006BAA;
+  --fb-green:    #2D6A4F;
+  --k-navy:      #16213E;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.94); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 60px;
+}
+.nav-name { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--ink); letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--ink-mid); text-decoration: none; text-transform: uppercase; transition: color 0.18s; }
+.nav-links a:hover { color: var(--accent); }
+
+/* ── HERO ── */
+#hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; background: var(--white); position: relative; overflow: hidden; }
+.hero-stripe { position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--accent-dark) 0%, var(--accent) 60%, #5A9FCC 100%); }
+.hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.hero-name { font-family: 'Playfair Display', serif; font-weight: 800; font-size: clamp(48px, 7vw, 88px); line-height: 1.0; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
+.hero-name em { font-style: italic; color: var(--accent); }
+.hero-tagline { font-size: clamp(16px, 1.8vw, 20px); font-weight: 300; color: var(--ink-mid); max-width: 580px; line-height: 1.6; margin-bottom: 56px; }
+.hero-stats { display: flex; gap: 48px; flex-wrap: wrap; padding-top: 40px; border-top: 1px solid var(--rule); }
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat-num { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 44px; line-height: 1; color: var(--accent); letter-spacing: -0.01em; }
+.stat-label { font-size: 12px; color: var(--ink-light); font-weight: 500; letter-spacing: 0.02em; }
+
+/* ── SHARED ── */
+section { padding: 96px 48px; }
+section:nth-child(even) { background: var(--white); }
+.label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 10px; }
+.section-h { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(28px, 3.8vw, 44px); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 14px; }
+.section-intro { font-size: 17px; color: var(--ink-mid); font-weight: 300; max-width: 620px; line-height: 1.7; margin-bottom: 60px; }
+
+/* ── ABOUT ── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.about-body { font-size: 17px; line-height: 1.8; color: var(--ink-mid); font-weight: 300; }
+.about-body p + p { margin-top: 20px; }
+.pillars { display: flex; flex-direction: column; gap: 18px; }
+.pillar { padding: 22px 24px; border-radius: 2px; border-left: 3px solid transparent; background: var(--bg); }
+.p-ux   { border-color: var(--accent); }
+.p-ed   { border-color: var(--teal); }
+.p-lead { border-color: #2C6E9E; }
+.pillar-h { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+.p-ux   .pillar-h { color: var(--accent); }
+.p-ed   .pillar-h { color: var(--teal); }
+.p-lead .pillar-h { color: #2C6E9E; }
+.pillar-b { font-size: 14px; color: var(--ink-mid); line-height: 1.58; }
+
+/* ── CASES ── */
+#work { background: var(--bg); }
+.cases { display: flex; flex-direction: column; gap: 80px; }
+.case { display: grid; grid-template-columns: 300px 1fr; gap: 56px; padding-bottom: 80px; border-bottom: 1px solid var(--rule); }
+.case:last-child { border-bottom: none; padding-bottom: 0; }
+.case-left { display: flex; flex-direction: column; gap: 10px; }
+.case-org { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
+.case-h { font-family: 'Playfair Display', serif; font-size: 24px; line-height: 1.2; color: var(--ink); }
+.case-role { font-size: 13px; color: var(--ink-light); }
+.tag { display: inline-block; padding: 3px 10px; border-radius: 2px; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin-top: 2px; align-self: start; }
+.t-ux    { background: var(--accent-pale); color: var(--accent-dark); }
+.t-ed    { background: var(--teal-pale);   color: var(--teal); }
+.t-data  { background: var(--plum-pale);   color: var(--accent-dark); }
+.t-brand { background: var(--gold-pale);   color: var(--gold); }
+
+/* browser frame */
+.browser { border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; margin-top: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.browser-bar { display: flex; align-items: center; gap: 6px; padding: 9px 14px; background: #F2F2F7; border-bottom: 1px solid var(--rule); }
+.dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.dot:nth-child(1) { background: #FF5F57; }
+.dot:nth-child(2) { background: #FEBC2E; }
+.dot:nth-child(3) { background: #28C840; }
+.browser-url { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-light); margin-left: 6px; background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 2px 10px; flex: 1; }
+.browser-body { position: relative; overflow: hidden; }
+.browser-body img { width: 100%; display: block; }
+.browser-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(255,255,255,0.97)); display: flex; align-items: flex-end; padding: 14px 16px; }
+.browser-link { font-size: 12px; font-weight: 600; color: var(--accent); text-decoration: none; letter-spacing: 0.02em; }
+.browser-link:hover { text-decoration: underline; }
+/* color backgrounds for sites without usable images */
+.bg-cb { background: linear-gradient(135deg, #003f73 0%, var(--cb-blue) 60%, #0094d8 100%); }
+.bg-fb { background: linear-gradient(135deg, #0D3B2A 0%, var(--fb-green) 60%, #52B788 100%); }
+.bg-k  { background: linear-gradient(135deg, #0D1B34 0%, var(--k-navy) 60%, #1B3A6B 100%); }
+.mock-screen { padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; }
+.mock-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: rgba(255,255,255,0.9); }
+.mock-sub  { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; text-transform: uppercase; }
+.mock-nav  { display: flex; gap: 14px; margin-top: 8px; }
+.mock-nav span { font-size: 11px; color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.08); padding: 3px 9px; border-radius: 2px; }
+.mock-hero-text { font-size: 22px; font-weight: 300; color: rgba(255,255,255,0.85); margin-top: 12px; line-height: 1.3; max-width: 220px; }
+.mock-cta { display: inline-block; background: rgba(255,255,255,0.18); color: #fff; font-size: 11px; font-weight: 600; padding: 7px 16px; border-radius: 2px; margin-top: 8px; letter-spacing: 0.04em; }
+
+/* email thumbnail */
+.email-thumb { border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.email-thumb-header { background: #F9F9FB; padding: 10px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+.email-from { font-size: 12px; color: var(--ink-mid); }
+.email-from strong { color: var(--ink); }
+.email-body-preview { padding: 16px; background: white; font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
+.email-stats-row { display: flex; gap: 0; border-top: 1px solid var(--rule); }
+.email-stat { flex: 1; text-align: center; padding: 12px 8px; border-right: 1px solid var(--rule); }
+.email-stat:last-child { border-right: none; }
+.email-stat-num { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--ink); line-height: 1; }
+.email-stat-label { font-size: 10px; color: var(--ink-light); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 3px; }
+.email-stat.highlight .email-stat-num { color: var(--accent); }
+
+/* case content */
+.case-right { display: flex; flex-direction: column; gap: 28px; }
+.block-h { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 10px; }
+.narrative { font-size: 15px; color: var(--ink-mid); line-height: 1.72; font-weight: 300; }
+.steps { display: flex; flex-direction: column; gap: 7px; }
+.step { display: flex; gap: 14px; padding: 11px 16px; background: var(--white); border: 1px solid var(--rule); border-radius: 3px; }
+.sn { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-light); flex-shrink: 0; width: 18px; }
+.st { font-size: 14px; color: var(--ink-mid); line-height: 1.55; }
+.st strong { color: var(--ink); font-weight: 600; }
+.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.metrics.four { grid-template-columns: repeat(4, 1fr); }
+.metric { padding: 18px 16px; background: var(--white); border: 1px solid var(--rule); border-radius: 3px; }
+.m-num { font-family: 'Playfair Display', serif; font-size: 28px; line-height: 1; color: var(--ink); }
+.m-label { font-size: 12px; color: var(--ink-light); margin-top: 4px; line-height: 1.4; }
+
+/* email campaign grid */
+.email-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* ── CAPABILITIES ── */
+#capabilities { background: var(--accent); }
+#capabilities .label { color: rgba(255,255,255,0.55); }
+#capabilities .section-h { color: #fff; }
+#capabilities .section-intro { color: rgba(255,255,255,0.8); }
+.cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.cap { padding: 32px 28px; background: rgba(255,255,255,0.12); transition: background 0.18s; border-radius: 4px; }
+.cap:hover { background: rgba(255,255,255,0.22); }
+.cap-icon { font-size: 22px; margin-bottom: 14px; }
+.cap-h { font-family: 'Playfair Display', serif; font-size: 19px; color: #fff; margin-bottom: 8px; line-height: 1.2; }
+.cap-b { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.65; }
+
+/* ── APPROACH ── */
+.approach-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.ap { padding: 28px 22px 24px; background: var(--white); border: 1px solid var(--rule); border-radius: 2px; position: relative; }
+.ap-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 52px; line-height: 1; color: #C8DFF0; position: absolute; top: 12px; right: 16px; }
+.ap-h { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 9px; line-height: 1.3; }
+.ap-b { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+
+/* ── CONTACT ── */
+#contact { text-align: center; background: var(--white); }
+#contact .section-intro { margin: 0 auto 44px; }
+.contact-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 2px; font-size: 14px; font-weight: 500; text-decoration: none; transition: all 0.18s; letter-spacing: 0.01em; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: #2C5F8A; }
+.btn-secondary { background: var(--bg); color: var(--ink); border: 1px solid var(--rule); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── FOOTER ── */
+footer { padding: 26px 48px; background: #2C5F8A; display: flex; justify-content: space-between; align-items: center; }
+.f-name { font-family: 'Playfair Display', serif; font-size: 14px; color: rgba(255,255,255,0.4); }
+.f-note { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 920px) {
+  nav { padding: 0 24px; }
+  section { padding: 70px 24px; }
+  #hero { padding: 100px 24px 60px; }
+  .about-grid, .case { grid-template-columns: 1fr; gap: 28px; }
+  .cap-grid { grid-template-columns: 1fr 1fr; }
+  .approach-grid { grid-template-columns: 1fr 1fr; }
+  .metrics { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+@media (max-width: 560px) {
+  .cap-grid, .approach-grid, .metrics { grid-template-columns: 1fr; }
+  .email-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { *, html { transition: none !important; scroll-behavior: auto !important; } }
+
+  /* Hero two-column layout */
+  .hero-layout { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: center; }
+  .hero-text { display: flex; flex-direction: column; }
+  .hero-role {
+    font-size: 22px; font-weight: 500; color: #4682B4;
+    margin-bottom: 20px; margin-top: -10px; letter-spacing: 0.01em;
+  }
+  .hero-photo { display: flex; justify-content: flex-end; align-items: center; }
+  .hero-photo img {
+    width: 320px; height: 380px; object-fit: cover; object-position: center top;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(70,130,180,0.18), 0 2px 12px rgba(0,0,0,0.08);
+  }
+  @media (max-width: 920px) {
+    .hero-layout { grid-template-columns: 1fr; }
+    .hero-photo { justify-content: center; margin-top: 32px; }
+    .hero-photo img { width: 220px; height: 260px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name" style="color:#4682B4;">Jyoti Singh</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-stripe"></div>
+  <div class="hero-layout">
+    <div class="hero-text">
+      <h1 class="hero-name"><span style="color:#4682B4;">Hi, I'm Jyoti.</span></h1>
+      <p class="hero-role">Digital Product &amp; UX Strategist</p>
+      <p class="hero-tagline">I have 20 years of experience leading digital product, UX, and content strategy for higher education and mission-driven organizations. I build seamless, intuitive digital experiences that break down barriers and make complex journeys effortless.</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Years in digital strategy</div></div>
+        <div class="stat"><div class="stat-num">5×</div><div class="stat-label">Enrollment growth, Calbright (1,500 → 8,000)</div></div>
+        <div class="stat"><div class="stat-num">3×</div><div class="stat-label">Enrollment growth, Kendall College</div></div>
+        <div class="stat"><div class="stat-num">+25%</div><div class="stat-label">Client acquisition, Fremont Bank</div></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="jyoti_headshot.jpg" alt="Jyoti Singh — Digital Product &amp; UX Strategist">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="label">Background</div>
+  <h2 class="section-h">Strategy grounded in<br>who the user actually is</h2>
+  <div class="about-grid">
+    <div class="about-body">
+      <p>I've spent my career at the intersection of institutional mission and digital execution — building products and experiences not for ideal users, but for real ones: working adults navigating college enrollment for the first time, prospective students comparing programs on a phone at 11pm, community members trying to understand what a bank can do for them.</p>
+      <p>That means I approach UX and content strategy from a deep understanding of user context, not just conversion goals. At Calbright College — California's only online community college — our learners are often first-generation students with limited digital access. Every product decision has to account for that reality: in page architecture, accessibility standards, the language we use, and the pathways we create.</p>
+      <p>Before higher education, I built brand and marketing infrastructure at scale at Sara Lee, Corelle Brands, and The Myers-Briggs Company, and carried that rigor for measurement, systems thinking, and team development into every institution I've served since.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar p-ux">
+        <div class="pillar-h">UX &amp; Product Leadership</div>
+        <div class="pillar-b">End-to-end ownership of digital product development — from user research and information architecture through content strategy, accessibility, and iterative improvement cycles.</div>
+      </div>
+      <div class="pillar p-ed">
+        <div class="pillar-h">Public Higher Education</div>
+        <div class="pillar-b">Deep firsthand experience with California public institutions — statewide digital reach, nontraditional learner populations, and the real stakes of a confusing enrollment pathway.</div>
+      </div>
+      <div class="pillar p-lead">
+        <div class="pillar-h">Cross-Functional Leadership</div>
+        <div class="pillar-b">Proven track record building consensus across academic leadership, IT, enrollment, and external vendors — translating institutional priorities into product requirements teams can build.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="label">Selected Work</div>
+  <h2 class="section-h">Three institutions.<br>Three distinct challenges.</h2>
+  <p class="section-intro">Each project required understanding a different user population, a different institutional context, and a different definition of digital success.</p>
+
+  <div class="cases">
+
+    <!-- ── CALBRIGHT ── -->
+    <div class="case">
+      <div class="case-left">
+        <div class="case-org">Calbright College · 2022–Present</div>
+        <div class="case-h">Statewide Digital Experience &amp; Email Program</div>
+        <div class="case-role">Marketing Director — Digital Product &amp; UX Strategy</div>
+        <span class="tag t-ux">UX Strategy</span>
+        <span class="tag t-ed">Higher Education</span>
+        <span class="tag t-data">Email Marketing</span>
+
+        <!-- Live site browser frame -->
+        <div class="browser" style="margin-top: 14px;">
+          <div class="browser-bar">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            <div class="browser-url">calbright.edu/programs</div>
+          </div>
+          <div class="browser-body bg-cb">
+            <img src="https://www.calbright.edu/wp-content/uploads/2022/04/OG-Image-Calbright-Facebook.jpg"
+                 alt="Calbright College programs page"
+                 style="opacity:0.35; height:180px; object-fit:cover;">
+            <div class="browser-overlay">
+              <a href="https://www.calbright.edu/programs/" target="_blank" rel="noopener" class="browser-link">View live site →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-right">
+        <div>
+          <div class="block-h">The Challenge</div>
+          <p class="narrative">When I joined Calbright, the college had approximately 1,500 enrolled students. Through integrated digital strategy — encompassing UX improvements, content strategy, targeted email campaigns, and data-driven enrollment marketing — the institution grew to over 8,000 enrolled students across the state of California. The digital experience had to earn trust fast, reduce confusion, and create clear pathways to enrollment for users with high skepticism and limited time.</p>
+        </div>
+        <div>
+          <div class="block-h">UX Process</div>
+          <div class="steps">
+            <div class="step"><span class="sn">01</span><span class="st"><strong>Behavioral research &amp; accessibility audit</strong> — analyzed drop-off data, support ticket themes, and usability gaps to identify where learners were losing confidence or path.</span></div>
+            <div class="step"><span class="sn">02</span><span class="st"><strong>WCAG accessibility remediation</strong> — directed compliance improvements across learner-facing platforms, prioritizing mobile usability and plain-language content rewrites.</span></div>
+            <div class="step"><span class="sn">03</span><span class="st"><strong>Content strategy overhaul</strong> — restructured program pages around learner questions ("What will I do? What does it cost? How long?") rather than institutional descriptions.</span></div>
+            <div class="step"><span class="sn">04</span><span class="st"><strong>Email program development</strong> — built and executed multi-campaign email strategy across enrollment, program launches, and student engagement, establishing consistent brand voice and measurable performance benchmarks.</span></div>
+            <div class="step"><span class="sn">05</span><span class="st"><strong>Analytics infrastructure</strong> — implemented SEO, SEM, and CRM frameworks enabling data-driven, iterative product improvement and ongoing performance measurement.</span></div>
+          </div>
+        </div>
+
+        <!-- Email campaign samples -->
+        <div>
+          <div class="block-h">Email Campaign Samples — Live Work</div>
+          <div class="email-grid">
+
+            <div class="email-thumb">
+              <div class="email-thumb-header">
+                <div class="email-from"><strong>Calbright College</strong> · Info Session</div>
+              </div>
+              <div class="email-body-preview">
+                Join us <strong>Wednesday, June 24 at 4pm PT</strong> for a Calbright Information Session. Learn about our flexibly paced, free programs — directly from Calbright staff.
+                <div style="margin-top: 10px;"><a href="https://email.calbright.edu/join-our-info-session-today-1?ecid=&utm_campaign=Information%20Sessions&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_sdCG2YuVB7aFLX6xyYtsreNEDVCSrMvfbV3F1k9cuf35zhmjK-DXx4cw2Bu4rX7zKA81Z" target="_blank" rel="noopener" style="font-size:12px; color: var(--accent); font-weight:600; text-decoration:none;">View email →</a></div>
+              </div>
+              <div class="email-stats-row">
+                <div class="email-stat"><div class="email-stat-num">1,147</div><div class="email-stat-label">Delivered</div></div>
+                <div class="email-stat highlight"><div class="email-stat-num">22.1%</div><div class="email-stat-label">Open rate</div></div>
+                <div class="email-stat"><div class="email-stat-num">3.1%</div><div class="email-stat-label">Click rate</div></div>
+              </div>
+            </div>
+
+            <div class="email-thumb">
+              <div class="email-thumb-header">
+                <div class="email-from"><strong>Calbright College</strong> · Info Session (Reminder)</div>
+              </div>
+              <div class="email-body-preview">
+                <strong>Join us tomorrow</strong> — July 9 Info Session. A reminder for learners who expressed interest in Calbright's free, flexible certificate programs.
+                <div style="margin-top: 10px;"><a href="https://email.calbright.edu/join-us-tomorrow-july-9-for-a-calbright-information-session?ecid=&utm_campaign=Information%20Sessions&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_VRQbD-K2RhPuzSonClGmJ5TB39fhtOB8k7K1PxFCZ95WL2V_gvpCpl6H4fmqUNA0cRQ1Q" target="_blank" rel="noopener" style="font-size:12px; color: var(--accent); font-weight:600; text-decoration:none;">View email →</a></div>
+              </div>
+              <div class="email-stats-row">
+                <div class="email-stat"><div class="email-stat-num">4,394</div><div class="email-stat-label">Delivered</div></div>
+                <div class="email-stat highlight"><div class="email-stat-num">31.6%</div><div class="email-stat-label">Open rate</div></div>
+                <div class="email-stat"><div class="email-stat-num">3.0%</div><div class="email-stat-label">Click rate</div></div>
+              </div>
+            </div>
+
+            <div class="email-thumb">
+              <div class="email-thumb-header">
+                <div class="email-from"><strong>Calbright College</strong> · CHW Program Launch</div>
+              </div>
+              <div class="email-body-preview">
+                <strong>Now open:</strong> Calbright's Community Health Worker program. New certificate program announcement to general prospect audience across California.
+                <div style="margin-top: 10px;"><a href="https://email.calbright.edu/now-open-enroll-in-calbrights-community-health-worker-program?ecid=&utm_campaign=35705762-CHW%20Full%20program%20launch&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9JYvoppfnyoVV6d8Bca9L4TsYd9uUqN4E9N2edLg-CzM1gubaH6j6Q0glV9hMwLvQtehGA" target="_blank" rel="noopener" style="font-size:12px; color: var(--accent); font-weight:600; text-decoration:none;">View email →</a></div>
+              </div>
+              <div class="email-stats-row">
+                <div class="email-stat"><div class="email-stat-num">11,840</div><div class="email-stat-label">Delivered</div></div>
+                <div class="email-stat highlight"><div class="email-stat-num">19.5%</div><div class="email-stat-label">Open rate</div></div>
+                <div class="email-stat"><div class="email-stat-num">2.6%</div><div class="email-stat-label">Click rate</div></div>
+              </div>
+            </div>
+
+            <div class="email-thumb">
+              <div class="email-thumb-header">
+                <div class="email-from"><strong>Calbright College</strong> · Student Experience Survey</div>
+              </div>
+              <div class="email-body-preview">
+                <strong>Your feedback is invaluable.</strong> Survey outreach to current students — part of a two-email sequence to maximize response rate and data quality.
+                <div style="margin-top: 10px;"><a href="https://email.calbright.edu/your-feedback-is-invaluable-please-complete-the-calbright-student-experience-survey-1?ecid=&utm_campaign=Student%20Experience%20Survey&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_RxtjD1LOVHnnt40g0wrY6AmT1PXtxtJToa-jKjVo3Cw4Z9k9VW-vht51aDXoBjL10PxNu" target="_blank" rel="noopener" style="font-size:12px; color: var(--accent); font-weight:600; text-decoration:none;">View email →</a></div>
+              </div>
+              <div class="email-stats-row">
+                <div class="email-stat"><div class="email-stat-num">7,455</div><div class="email-stat-label">Delivered</div></div>
+                <div class="email-stat highlight"><div class="email-stat-num">18.6%</div><div class="email-stat-label">Open rate</div></div>
+                <div class="email-stat"><div class="email-stat-num">1.5%</div><div class="email-stat-label">Click rate</div></div>
+              </div>
+            </div>
+
+          </div>
+          <p style="font-size: 12px; color: var(--ink-light); margin-top: 10px; font-style: italic;">Open rates consistently above industry benchmarks for higher ed (avg. 15–18%). CHW launch campaign reached 11,840 prospects.</p>
+        </div>
+
+        <div>
+          <div class="block-h">Enrollment &amp; Platform Results</div>
+          <div class="metrics four">
+            <div class="metric"><div class="m-num">5×</div><div class="m-label">Enrollment growth: 1,500 enrolled students when joined → 8,000+</div></div>
+            <div class="metric"><div class="m-num">58</div><div class="m-label">CA counties reached — statewide coverage across all of California</div></div>
+            <div class="metric"><div class="m-num">WCAG</div><div class="m-label">Accessibility standards implemented across learner-facing platforms</div></div>
+            <div class="metric"><div class="m-num">10+</div><div class="m-label">Certificate programs supported through integrated digital strategy</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── KENDALL ── -->
+    <div class="case">
+      <div class="case-left">
+        <div class="case-org">Kendall College · 2005–2008</div>
+        <div class="case-h">Website Redesign &amp; Enrollment Transformation</div>
+        <div class="case-role">Director, Marketing, Communications &amp; Enrollment Strategy</div>
+        <span class="tag t-brand">Brand &amp; Product</span>
+        <span class="tag t-ed">Higher Education</span>
+
+        <div class="browser" style="margin-top: 14px;">
+          <div class="browser-bar">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            <div class="browser-url">kendall.edu · Chicago, IL</div>
+          </div>
+          <div class="browser-body bg-k">
+            <div class="mock-screen">
+              <div class="mock-logo">Kendall College</div>
+              <div class="mock-sub">School of Culinary Arts &amp; Business · Chicago</div>
+              <div class="mock-nav">
+                <span>Programs</span><span>Admissions</span><span>Campus Life</span><span>About</span>
+              </div>
+              <div class="mock-hero-text">Start your culinary career here.</div>
+              <span class="mock-cta">Explore Programs →</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size: 11px; color: var(--ink-light); margin-top: 8px; line-height: 1.5;">Kendall College was acquired by National Louis University in 2018. The site shown reflects the brand and navigational architecture from the 2005–2008 redesign period.</p>
+      </div>
+
+      <div class="case-right">
+        <div>
+          <div class="block-h">The Challenge</div>
+          <p class="narrative">Kendall's website was organized around academic departments — how the college thought about itself — rather than how prospective students made decisions. Enrollment was flat. The task was a full rethinking of the digital experience, from information architecture through content strategy, alongside an institutional brand repositioning.</p>
+        </div>
+        <div>
+          <div class="block-h">UX Process</div>
+          <div class="steps">
+            <div class="step"><span class="sn">01</span><span class="st"><strong>Prospective student journey mapping</strong> — identified how students actually made program decisions and where the site created friction or confusion along that path.</span></div>
+            <div class="step"><span class="sn">02</span><span class="st"><strong>Information architecture redesign</strong> — restructured navigation and program pages around user goals ("I want a culinary career") rather than the institution's internal org structure.</span></div>
+            <div class="step"><span class="sn">03</span><span class="st"><strong>Content strategy &amp; faculty collaboration</strong> — partnered with deans and faculty to translate academic strengths into student-facing narratives grounded in outcomes and career paths.</span></div>
+            <div class="step"><span class="sn">04</span><span class="st"><strong>Developer &amp; designer direction</strong> — directed design and development through the full build: reviewing prototypes and staging, and iterating based on behavioral data post-launch.</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="block-h">Results</div>
+          <div class="metrics">
+            <div class="metric"><div class="m-num">3×</div><div class="m-label">Student enrollment growth through integrated digital &amp; brand strategy</div></div>
+            <div class="metric"><div class="m-num">+50%</div><div class="m-label">Website traffic increase post-redesign</div></div>
+            <div class="metric"><div class="m-num">+35%</div><div class="m-label">User engagement improvement</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FREMONT BANK ── -->
+    <div class="case">
+      <div class="case-left">
+        <div class="case-org">Fremont Bank · 2018–2022</div>
+        <div class="case-h">Digital Strategy &amp; Community-Centered Experience</div>
+        <div class="case-role">Marketing Director — Digital Strategy &amp; Experience</div>
+        <span class="tag t-data">Data-Driven</span>
+        <span class="tag t-ux">Digital Experience</span>
+
+        <div class="browser" style="margin-top: 14px;">
+          <div class="browser-bar">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            <div class="browser-url">fremontbank.com</div>
+          </div>
+          <div class="browser-body">
+            <img src="https://www.fremontbank.com/FremontBank/media/Images/Components/nighttime-scene.jpg?ext=.jpg"
+                 alt="Fremont Bank nighttime community scene"
+                 style="height: 200px; object-fit: cover; width: 100%;">
+            <div class="browser-overlay">
+              <a href="https://www.fremontbank.com/" target="_blank" rel="noopener" class="browser-link">View live site →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-right">
+        <div>
+          <div class="block-h">The Challenge</div>
+          <p class="narrative">Fremont Bank needed to grow its client base among Bay Area residents and local businesses in a market dominated by national brands. The opportunity was in community trust and local relevance — building a digital presence that felt genuinely connected to the communities it served, not just a regional branch of something larger.</p>
+        </div>
+        <div>
+          <div class="block-h">UX &amp; Digital Approach</div>
+          <div class="steps">
+            <div class="step"><span class="sn">01</span><span class="st"><strong>Digital channel audit &amp; journey optimization</strong> — identified drop-off points in the client acquisition journey and optimized content and UX to reduce friction at key decision moments.</span></div>
+            <div class="step"><span class="sn">02</span><span class="st"><strong>Analytics infrastructure &amp; iteration</strong> — led adoption of marketing technology platforms establishing measurement frameworks that supported ongoing, data-informed product decisions.</span></div>
+            <div class="step"><span class="sn">03</span><span class="st"><strong>Community content strategy</strong> — developed digital content grounded in local relationships, civic partnerships, and community stories — differentiating the brand through authentic local relevance.</span></div>
+            <div class="step"><span class="sn">04</span><span class="st"><strong>Cross-functional execution</strong> — partnered with internal teams and agency partners to execute integrated campaigns across web, social, PR, and community channels.</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="block-h">Results</div>
+          <div class="metrics">
+            <div class="metric"><div class="m-num">+25%</div><div class="m-label">New client acquisition, outperforming goals</div></div>
+            <div class="metric"><div class="m-num">+20%</div><div class="m-label">Website visit increase</div></div>
+            <div class="metric"><div class="m-num">+35%</div><div class="m-label">Social media engagement growth</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities">
+  <div class="label">What I Bring</div>
+  <h2 class="section-h">Capabilities</h2>
+  <p class="section-intro">From user research to vendor management, from content audits to executive advising — the full arc of digital product leadership.</p>
+  <div class="cap-grid">
+    <div class="cap"><div class="cap-icon">🔍</div><div class="cap-h">UX Research &amp; Discovery</div><div class="cap-b">Behavioral analysis, user journey mapping, drop-off identification, accessibility audits, and synthesis into actionable product direction grounded in real user context.</div></div>
+    <div class="cap"><div class="cap-icon">🏗️</div><div class="cap-h">Information Architecture</div><div class="cap-b">Restructuring site navigation and content hierarchies around how users actually think and search — not how institutions are internally organized.</div></div>
+    <div class="cap"><div class="cap-icon">✍️</div><div class="cap-h">Content Strategy</div><div class="cap-b">Translating complex institutional offerings into clear user-facing narratives. Content audits, voice frameworks, plain-language rewrites, and ongoing governance.</div></div>
+    <div class="cap"><div class="cap-icon">♿</div><div class="cap-h">Accessibility (WCAG)</div><div class="cap-b">Directing WCAG-compliant digital experiences with emphasis on mobile usability and equitable access for nontraditional, first-generation user populations.</div></div>
+    <div class="cap"><div class="cap-icon">📊</div><div class="cap-h">Analytics &amp; Iteration</div><div class="cap-b">Building measurement infrastructure — SEO, behavioral data, CRM, email performance — to drive iterative, evidence-based product improvement.</div></div>
+    <div class="cap"><div class="cap-icon">🤝</div><div class="cap-h">Stakeholder &amp; Vendor Leadership</div><div class="cap-b">Translating user and institutional needs into clear product requirements for technical teams. Building consensus across academic, IT, enrollment, and executive stakeholders.</div></div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="label">How I Work</div>
+  <h2 class="section-h">A consistent process<br>across every institution</h2>
+  <p class="section-intro">Whether the product is a flagship university site or a single program page, the process stays the same: understand before building, involve the right people, never stop measuring.</p>
+  <div class="approach-grid">
+    <div class="ap"><div class="ap-num">1</div><div class="ap-h">Understand the user first</div><div class="ap-b">Behavioral data, drop-off analysis, and real user feedback — before touching design or content. The user's reality is the starting constraint, not an afterthought.</div></div>
+    <div class="ap"><div class="ap-num">2</div><div class="ap-h">Align institutional priorities</div><div class="ap-b">User needs and business goals aren't always in conflict — but when they are, I bring evidence into the room. Consensus built on data holds longer than consensus built on opinion.</div></div>
+    <div class="ap"><div class="ap-num">3</div><div class="ap-h">Build with the technical team</div><div class="ap-b">Requirements that include the "why." Prototype reviews before final build. Pushback when something technically correct doesn't solve the user's actual problem.</div></div>
+    <div class="ap"><div class="ap-num">4</div><div class="ap-h">Measure, learn, improve</div><div class="ap-b">Launch is not the end. Post-launch data informs the next iteration — making every product more useful each cycle rather than waiting for the next big redesign.</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="label">Get in Touch</div>
+  <h2 class="section-h">Let's talk digital strategy.</h2>
+  <p class="section-intro">I'm currently exploring director-level opportunities in digital product leadership, particularly in public higher education and mission-driven organizations.</p>
+  <div class="contact-row">
+    <a href="mailto:jothi1018@gmail.com" class="btn btn-primary">✉&nbsp; jothi1018@gmail.com</a>
+    <a href="tel:7737717873" class="btn btn-secondary">📞&nbsp; 773.771.7873</a>
+    <a href="https://www.linkedin.com/in/jyoti-s-4915231/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn →</a>
+  </div>
+</section>
+
+<footer>
+  <span class="f-name">Jyoti Singh · Digital Portfolio</span>
+  <span class="f-note">Director of Digital Strategy · UX &amp; Product Leadership</span>
+</footer>
+
+</body>
+</html>
